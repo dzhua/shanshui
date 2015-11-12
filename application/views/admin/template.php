@@ -49,10 +49,10 @@
 		<header class="container">
 		
 			<!-- Main page logo -->
-			<h1>宜优家具 - 后台管理系统</h1>
+			<h1><a href="/admin" class="brand">Huraga</a></h1>
 			
 			<!-- Main page headline -->
-			
+			<p>A beautifully minimalistic admin template</p>
 			<!-- Alternative navigation -->
 			<nav>
 				<ul>
@@ -80,7 +80,7 @@
 				<!-- User profile -->
 				<section class="user-profile">
 					<figure>
-					  <image alt="John Pixel avatar" src="/ci/image/admin/LOGO.png">
+					  <image alt="John Pixel avatar" src="/ci/image/admin/avatar.jpg">
 					  <figcaption>
 							<strong><a href="#" class=""><?php echo $this->session->userdata('admin_name');?></a></strong>
 							<em>超级管理员</em>

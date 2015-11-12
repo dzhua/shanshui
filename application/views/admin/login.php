@@ -4,9 +4,9 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		<title>后台管理 - EUGREAT</title>
+		<title>后台管理 </title>
 		<meta name="description" content="">
-		<meta name="author" content="后台管理 - EUGREAT">
+		<meta name="author" content="后台管理 ">
 		<meta name="robots" content="index, nofollow">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- CSS styles -->
@@ -30,7 +30,7 @@
 					<article class="span6 data-block" style="float:none" >
 						<div class="data-container">
 							<header>
-								<h2>JOKESIR LOGIN</h2>
+								<h2>LOGIN</h2>
 							</header>
 							<section>
 								<form class="form-inline" action="/admin/login" method="post">
@@ -52,7 +52,7 @@
 										</div>
 										<div class="control-group">											
 											<div class="controls">
-												<input type="submit" class="btn" value="芝麻开门">
+												<input type="submit" class="btn" value="登   录">
 											</div>
 										</div>
 									</fieldset>
@@ -72,7 +72,7 @@
 		
 		<!-- Main page footer -->
 		<footer class="container">
-			<center><p style="float:none;"><b>Copyright © 2015 eugreat.com. </b></p></center>
+			<center><p style="float:none;"><b>Copyright © 2015 xxx.com. </b></p></center>
 		</footer>
 		<!-- /Main page footer -->
 		

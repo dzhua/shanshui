@@ -11,20 +11,20 @@ class Login extends CI_Controller {
 	
 	public function index() {
 		if ( ! empty($_POST)) {
-			$name = strip_tags(trim($this->input->post('name')));
+			$user_name = strip_tags(trim($this->input->post('name')));
 			$password = strip_tags(trim($this->input->post('password')));
 
-			$admin = $this->common_model->sel_data('admin', array('name' => $name, 'password' => md5($password)), 'id,name');
+			$admin = $this->common_model->sel_data('admin', array('user_name' => $user_name, 'password' => md5($password)), 'id,name');
 			
 			if ($admin !== FALSE) {
 				$this->session->set_userdata(array('admin_id' => $admin['id']));
-				$this->session->set_userdata(array('admin_name' => $admin['name']));
+				$this->session->set_userdata(array('admin_name' => $admin['user_name']));
 				
 				// 统计信息
-				$statistics = $this->common_model->sel_statistics_data();
-				$this->session->set_userdata('statistics', $statistics);
+// 				$statistics = $this->common_model->sel_statistics_data();
+// 				$this->session->set_userdata('statistics', $statistics);
 				
-				redirect('/admin/news');
+				redirect('/admin/dashboard');
 			}else {
 				$data['error'] = TRUE;
 				$this->load->view('admin/login', $data);
