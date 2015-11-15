@@ -109,7 +109,7 @@
 					<ul>
 						<li <?php if ($menu == 'dashboard') { ?>class="current"<?php } ?>><a href="/admin" class="no-submenu"><span class="awe-home"></span>Dashboard</a></li>
 						<li <?php if ($menu == 'financing') { ?>class="current"<?php } ?>>
-							<a href="#"><span class="awe-tasks"></span>理财管理<span class="badge"><?php echo empty($statistics['financing_count'])?0:$statistics['news_count'];?></span></a>
+							<a href="#"><span class="awe-tasks"></span>理财管理<span class="badge"><?php echo empty($statistics['financing_count'])?0:$statistics['financing_count'];?></span></a>
 							<ul>
 								<li><a <?php if ($sub_menu == 'financing_list') { ?>class="current"<?php } ?> href="/admin/financing">理财查询</a></li>
 								<li <?php if ($sub_menu == 'financing_product_list') { ?>class="current"<?php } ?>><a href="/admin/financing/product">产品查询</a></li>

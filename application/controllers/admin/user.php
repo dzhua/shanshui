@@ -68,6 +68,19 @@ class User extends CI_Controller {
 		$data['next_page'] = $current_page < $page_count ? $current_page+1 : $page_count;
 		
 		$data['user_list'] 	= $this->user_model->sel_user_list($where, $offset, $psize);
+		foreach ($data['user_list'] as $key=>$val) {
+			switch ($val['status']) {
+				case 1:
+					$data['user_list'][$key]['status'] = '审核通过';
+				break;
+				case 2:
+					$data['user_list'][$key]['status'] = '审核未通过';
+				break;
+				default:
+					$data['user_list'][$key]['status'] = '未审核';
+				break;
+			}
+		}
 		
 		$data['menu'] 			= 'user';
 		$data['sub_menu'] 		= 'user_list';
@@ -146,13 +159,13 @@ class User extends CI_Controller {
 	
 	public function upd() {
 		$id = $this->uri->segment ( 4 );
-		if(empty($id)) redirect('/admin/news');
+		if(empty($id)) redirect('/admin/user');
 
-		$data = $this->common_model->sel_data('news', array('id' => $id));
-		$data['menu'] = 'news';
-		$data['sub_menu'] = 'news_list';
+		$data = $this->common_model->sel_data('user', array('id' => $id));
+		$data['menu'] = 'user';
+		$data['sub_menu'] = 'user_list';
 		
-		$data['main_content'] = $this->load->view('admin/news_edit', $data, TRUE);
+		$data['main_content'] = $this->load->view('admin/user_edit', $data, TRUE);
 		
 		$this->load->view('admin/template', $data);
 	}
@@ -164,9 +177,9 @@ class User extends CI_Controller {
 		$title		= trim($this->input->post('title'));
 		$content	= trim($this->input->post('content'));
 
-		if(empty($id)) redirect('/admin/news');
+		if(empty($id)) redirect('/admin/user');
 		
-		$news = array(
+		$user = array(
 			'title'		=> $title,
 			'content'	=> $content
 		);
@@ -174,7 +187,7 @@ class User extends CI_Controller {
 		if ($_FILES['userfile']['name']) {	
 			$tmp_name 	= $_FILES['userfile']['tmp_name'];
 			$file_name	= time().'.jpg';
-			$file_path 	= APP_SCRIPT.IMG_NEWS_UPLOAD_PATH;
+			$file_path 	= APP_SCRIPT.IMG_user_UPLOAD_PATH;
 		
 			if ( ! file_exists($file_path))
 				@mkdir($file_path);
@@ -211,37 +224,59 @@ class User extends CI_Controller {
 						$this->_do_image ( '_m', $path, $image_width, $image_height );
 					}
 		
-					$news['img_name'] = IMG_NEWS_UPLOAD_PATH . $file_name;
+					$user['img_name'] = IMG_user_UPLOAD_PATH . $file_name;
 				}
 			}
 		}
 			
-		$news['create_time'] = time();
-		$news_id = $this->common_model->upd_data('news', array('id' => $id), $news);
+		$user['create_time'] = time();
+		$user_id = $this->common_model->upd_data('user', array('id' => $id), $user);
 		
-		redirect('/admin/news/add');
+		redirect('/admin/user/add');
 	}
 	
 	// ------------------------------------------------------------------------------------------------------------
 	
 	public function del() {
 		$id = $this->uri->segment ( 4 );
-		$this->common_model->upd_data('news', array('id' => $id), array('status' => 0));
+		$this->common_model->upd_data('user', array('id' => $id), array('status' => 0));
 		
-		redirect('/admin/news');
+		redirect('/admin/user');
+	}
+	
+	// ------------------------------------------------------------------------------------------------------------
+	
+	public function vetted() {
+		$id = $this->uri->segment ( 4 );
+		if (empty($id)) redirect('/admin/user');
+		$status = $this->uri->segment( 5 );
+		
+		if ($status) {
+			$this->common_model->upd_data('user_info', array('id' => $id), array('status' => $status));
+			
+			redirect('/admin/user');
+		} else {
+			$data = $this->common_model->sel_data('user_info', array('id' => $id));
+			$data['menu'] = 'user';
+			$data['sub_menu'] = 'user_vetted';
+			
+			$data['main_content'] = $this->load->view('admin/user_vetted', $data, TRUE);
+			
+			$this->load->view('admin/template', $data);
+		}
 	}
 	
 	// ------------------------------------------------------------------------------------------------------------
 	
 	public function rand() {
-		$news = $this->news_model->sel_news_rand();
+		$user = $this->user_model->sel_user_rand();
 		
-		foreach ($news as $key=>$val) {
-			$news[$key]['img_name'] = get_thumb_pic($val['img_name'], 'm');
-			$news[$key]['content'] = cut_str($val['content'], 50);
+		foreach ($user as $key=>$val) {
+			$user[$key]['img_name'] = get_thumb_pic($val['img_name'], 'm');
+			$user[$key]['content'] = cut_str($val['content'], 50);
 		}
 		
-		echo json_encode($news);
+		echo json_encode($user);
 	}
 	
 	// ------------------------------------------------------------------------------------------------------------

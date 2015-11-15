@@ -40,7 +40,7 @@
 												<th width="">姓名</th>
 												<th width="">账户类型</th>
 												<th width="">状态</th>
-												<th>操作</th>
+												<th ></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -49,9 +49,8 @@
 												<td><a href="#" target="_blank"><?php echo $admin['id'];?></a></td>
 												<td><?php echo $admin['user_name'];?></td>
 												<td><?php echo $admin['real_name'];?></td>
-												<td><?php echo $admin['password'];?></td>
-												<td><?php echo $admin['type'];?></td>
-												<td><?php echo $admin['status'];?></td>
+												<td><?php echo $admin['type']==1?'普通管理员':'超级管理员';?></td>
+												<td><?php echo $admin['status']==1?'启用':'禁用';?></td>
 												<td class="toolbar">
 													<div class="btn-group">
 														<button tag="<?php echo $admin['id'];?>" class="btn upd"><span class="awe-wrench"></span></button>
@@ -72,3 +71,11 @@
 				</div>
 				<!-- /Grid row -->
 </div>
+
+<script>
+	$(".upd").click(function(){
+		var id = $(this).attr("tag");
+		location.href = "/admin/admin/upd/"+id;
+		return false;
+	});
+</script>

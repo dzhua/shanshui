@@ -26,28 +26,28 @@
 										<fieldset>
 											<label for="input" class="control-label">商家名称</label>
 											<div class="controls">
-												<input type="text" name="company_name" class="input-xxlarge" id="company_name">
+												<input type="text" name="company_name" class="input-xxlarge" id="company_name" value="<?php echo empty($keyword['company_name'])?'':rawurldecode($keyword['company_name']);?>">
 											</div>
 											<label for="input" class="control-label">项目名称</label>
 											<div class="controls">
-												<input type="text" name="item_name" class="input-xxlarge" id="item_name">
+												<input type="text" name="item_name" class="input-xxlarge" id="item_name" value="<?php echo empty($keyword['item_name'])?'':rawurldecode($keyword['item_name']);?>">
 											</div>
 											<label for="input" class="control-label">认购期</label>
 											<div class="controls">
-												<input type="text" name="buy_start" class="input-large" id="buy_start" onClick="WdatePicker()"> ~
-												<input type="text" name="buy_stop" class="input-large" id="buy_stop" onClick="WdatePicker()">
+												<input type="text" name="buy_start" class="input-large" id="buy_start" onClick="WdatePicker()" value="<?php echo empty($keyword['buy_start'])?'':$keyword['buy_start'];?>"> ~
+												<input type="text" name="buy_stop" class="input-large" id="buy_stop" onClick="WdatePicker()" value="<?php echo empty($keyword['buy_stop'])?'':$keyword['buy_stop'];?>">
 											</div>
 											<label for="input" class="control-label">封闭期</label>
 											<div class="controls">
-												<input type="text" name="lock_start" class="input-large" id="lock_start" onClick="WdatePicker()"> ~
-												<input type="text" name="lock_stop" class="input-large" id="lock_stop" onClick="WdatePicker()">
+												<input type="text" name="lock_start" class="input-large" id="lock_start" onClick="WdatePicker()" value="<?php echo empty($keyword['lock_start'])?'':$keyword['lock_start'];?>"> ~
+												<input type="text" name="lock_stop" class="input-large" id="lock_stop" onClick="WdatePicker()" value="<?php echo empty($keyword['lock_stop'])?'':$keyword['lock_stop'];?>">
 											</div>
 											<label for="input" class="control-label">状态</label>
 											<div class="controls">
 												<select id="status" name="status">
 													<option value="0">请选择...</option>
 													<?php foreach($financing_status as $key=>$val) { ?>
-													<option value="<?php echo $val['id']; ?>"><?php echo $val['status']; ?></option>
+													<option value="<?php echo $val['id']; ?>" <?php echo $val['id']==$keyword['status']?'selected':'';?>><?php echo $val['status']; ?></option>
 													<?php } ?>
 												</select>
 											</div>
@@ -77,7 +77,7 @@
 												<th width="">结束时间</th>
 												<th width="">终止日期</th>
 												<th >项目状态</th>
-												<th>操作</th>
+												<th></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -88,7 +88,7 @@
 												<td><?php echo $financing['item_name'];?></td>
 												<td><?php echo $financing['total'];?></td>
 												<td><?php echo $financing['min_share'];?></td>
-												<td><?php echo $financing['rate'];?></td>
+												<td><?php echo $financing['rate'];?>%</td>
 												<td><?php echo date('Y-m-d', $financing['buy_start']);?></td>
 												<td><?php echo date('Y-m-d', $financing['buy_stop']);?></td>
 												<td><?php echo date('Y-m-d', $financing['lock_stop']);?></td>

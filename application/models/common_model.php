@@ -216,16 +216,21 @@ class Common_model extends CI_Model {
 	 *
 	 */
 	public function sel_statistics_data() {
-		$sql = 'SELECT COUNT(*) num FROM news WHERE `status`=1';
+		$sql = 'SELECT COUNT(*) num FROM financing';
 		$q = $this->db->query($sql);
-		$news = $q->row_array();
+		$financing = $q->row_array();
 		
-		$sql = 'SELECT COUNT(*) num FROM product WHERE `status`=1';
+		$sql = 'SELECT COUNT(*) num FROM user_info';
 		$q = $this->db->query($sql);
-		$product = $q->row_array();
+		$user_info = $q->row_array();
 		
-		$data['news_count'] 	= $news['num'];
-		$data['product_count'] 	= $product['num'];
+		$sql = 'SELECT COUNT(*) num FROM admin';
+		$q = $this->db->query($sql);
+		$admin = $q->row_array();
+		
+		$data['financing_count'] 	= $financing['num'];
+		$data['user_count'] 	= $user_info['num'];
+		$data['admin_count'] 	= $admin['num'];
 		
 		return $data;
 	}

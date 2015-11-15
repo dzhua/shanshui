@@ -74,10 +74,19 @@ class Financing extends CI_Controller {
 		
 		$data['financing_status']	= $this->financing_model->sel_financing_status();
 		$data['financing_list'] 	= $this->financing_model->sel_financing_list($where, $offset, $psize);
+		foreach ($data['financing_list'] as $key=>$val) {
+			foreach ($data['financing_status'] as $k=>$v) {
+				if ($val['status'] == $v['id']) {
+					$data['financing_list'][$key]['status'] = $v['status'];
+					break;
+				}
+			}
+		}
+		
 		
 		$data['menu'] 			= 'financing';
 		$data['sub_menu'] 		= 'financing_list';
-		$data['keyword'] 		= $keyword;
+		$data['keyword'] 		= $where;
 		$data['main_content'] = $this->load->view('admin/financing_list', $data, TRUE);
 		
 		$this->load->view('admin/template', $data);

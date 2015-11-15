@@ -56,6 +56,8 @@ $route['admin/financing/(:any)'] = 'admin/financing/index/$1';
 $route['admin/financing/(:any)/(:num)'] = 'admin/financing/index/$1/$2';
 $route['admin/user/create'] = 'admin/user/create';
 $route['admin/user/do_create'] = 'admin/user/do_create';
+$route['admin/user/vetted/(:num)'] = 'admin/user/vetted/$1';
+$route['admin/user/vetted/(:num)/(:num)'] = 'admin/user/vetted/$1/$2';
 $route['admin/user/(:any)'] = 'admin/user/index/$1';
 $route['admin/user/(:any)/(:num)'] = 'admin/user/index/$1/$2';
 

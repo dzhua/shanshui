@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 	
 	public function create() {
 		$data['menu'] = 'admin';
-		$data['sub_menu'] = 'admin_list';
+		$data['sub_menu'] = 'admin_create';
 		
 		$data['main_content'] = $this->load->view('admin/admin_create', $data, TRUE);
 		
@@ -37,72 +37,49 @@ class Admin extends CI_Controller {
 	}
 	
 	public function do_create() {
-		$admin_name		= trim($this->input->post('admin_name'));
+		$user_name		= trim($this->input->post('user_name'));
+		$real_name		= trim($this->input->post('real_name'));
 		$password		= trim($this->input->post('password'));
 		$repassword		= trim($this->input->post('repassword'));
+		$type			= trim($this->input->post('type'));
 		$company_name	= trim($this->input->post('company_name'));
-		$IDnumber		= trim($this->input->post('IDnumber'));
-		$linkman		= trim($this->input->post('linkman'));
-		$tel		= trim($this->input->post('tel'));
-		$mobile		= trim($this->input->post('mobile'));
-		$email		= trim($this->input->post('email'));
-		$fax		= trim($this->input->post('fax'));
-		$qq			= trim($this->input->post('qq'));
-		$address	= trim($this->input->post('address'));
-		$introduce	= trim($this->input->post('introduce'));
 		
 		if($password != $repassword) {
-			exit();
+			exit('密码不一致！');
 		}
 		
-		$admin_account = array(
-			'admin_name'	=> $admin_name,
-			'password'	=> md5($password),
-			'status'	=> 0,
-			'create_time'	=> time(),
-			'update_time'	=> time()
-		);
+		$admin = $this->common_model->sel_data('admin', array('user_name' => $user_name));
 		
-		$admin_account_id = $this->common_model->ins_data('admin_account', $admin_account);
-		
-		if ($admin_account_id) {
-			$admin_info = array(
-				'account_id'	=> $admin_account_id,
-				'company_name'	=> $company_name,
-				'IDnumber'		=> $IDnumber,
-				'linkman'		=> $linkman,
-				'tel'			=> $tel,
-				'mobile'		=> $mobile,
-				'email'			=> $email,
-				'fax'			=> $fax,
-				'qq'			=> $qq,
-				'city'			=> '',
-				'area'			=> '',
-				'district'		=> '',
-				'address'		=> $address,
-				'introduce'		=> $introduce,
-				'status'		=> 0,
+		if(empty($admin)) {
+			$admin_account = array(
+				'user_name'		=> $user_name,
+				'real_name'		=> $real_name,
+				'password'		=> md5($password),
+				'type'			=> $type,
+				'status'		=> 1,
 				'create_time'	=> time(),
 				'update_time'	=> time()
 			);
 			
-			$this->common_model->ins_data('admin_info', $admin_info);
+			$admin_id = $this->common_model->ins_data('admin', $admin_account);
+			
+			redirect('/admin/admin');
+		} else {
+			exit('用户名已经存在！');
 		}
-		
-		redirect('/admin/admin/create');
 	}
 	
 	// ------------------------------------------------------------------------------------------------------------
 	
 	public function upd() {
 		$id = $this->uri->segment ( 4 );
-		if(empty($id)) redirect('/admin/news');
+		if(empty($id)) redirect('/admin/admin');
 
-		$data = $this->common_model->sel_data('news', array('id' => $id));
-		$data['menu'] = 'news';
-		$data['sub_menu'] = 'news_list';
+		$data = $this->common_model->sel_data('admin', array('id' => $id));
+		$data['menu'] = 'admin';
+		$data['sub_menu'] = 'admin_list';
 		
-		$data['main_content'] = $this->load->view('admin/news_edit', $data, TRUE);
+		$data['main_content'] = $this->load->view('admin/admin_edit', $data, TRUE);
 		
 		$this->load->view('admin/template', $data);
 	}

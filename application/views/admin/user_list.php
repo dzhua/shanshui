@@ -55,8 +55,8 @@
 												<th width="">联系人</th>
 												<th width="">手机号码</th>
 												<th width="">状态</th>
-												<th width="">备注</th>
-												<th>操作</th>
+												<th width="">查看</th>
+												<th></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -68,7 +68,7 @@
 												<td><?php echo $user['linkman'];?></td>
 												<td><?php echo $user['tel'];?></td>
 												<td><?php echo $user['status'];?></td>
-												<td><?php echo cut_str($user['introduction'], 25);?></td>
+												<td><a href="/admin/user/vetted/<?php echo $user['id'];?>">查看资料</a></td>
 												<td class="toolbar">
 													<div class="btn-group">
 														<button tag="<?php echo $user['id'];?>" class="btn upd"><span class="awe-wrench"></span></button>
