@@ -4,9 +4,9 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="zh"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		<title>后台管理 - UCGREAT</title>
+		<title>后台管理 - 山水金额</title>
 		<meta name="description" content="">
-		<meta name="author" content="后台管理 - UCGREAT">
+		<meta name="author" content="后台管理 - 山水金额">
 		<meta name="robots" content="index, follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
@@ -107,21 +107,48 @@
 				<!-- Main navigation -->
 				<nav class="main-navigation" role="navigation">
 					<ul>
-						<li <?php if ($menu == 'dashboard') { ?>class="current"<?php } ?>><a href="/admin/news" class="no-submenu"><span class="awe-home"></span>Dashboard</a></li>
-						<li <?php if ($menu == 'news') { ?>class="current"<?php } ?>>
-							<a href="#"><span class="awe-tasks"></span>新闻<span class="badge"><?php echo empty($statistics['news_count'])?0:$statistics['news_count'];?></span></a>
+						<li <?php if ($menu == 'dashboard') { ?>class="current"<?php } ?>><a href="/admin" class="no-submenu"><span class="awe-home"></span>Dashboard</a></li>
+						<li <?php if ($menu == 'financing') { ?>class="current"<?php } ?>>
+							<a href="#"><span class="awe-tasks"></span>理财管理<span class="badge"><?php echo empty($statistics['financing_count'])?0:$statistics['news_count'];?></span></a>
 							<ul>
-								<li><a <?php if ($sub_menu == 'news_list') { ?>class="current"<?php } ?> href="/admin/news">新闻一览</a></li>
-								<li <?php if ($sub_menu == 'news_add') { ?>class="current"<?php } ?>><a href="/admin/news/add">添加新闻</a></li>
+								<li><a <?php if ($sub_menu == 'financing_list') { ?>class="current"<?php } ?> href="/admin/financing">理财查询</a></li>
+								<li <?php if ($sub_menu == 'financing_product_list') { ?>class="current"<?php } ?>><a href="/admin/financing/product">产品查询</a></li>
+							</ul>
+						</li>						
+						<li <?php if ($menu == 'crowdfunded') { ?>class="current"<?php } ?>>
+							<a href="#"><span class="awe-tasks"></span>众筹管理<span class="badge"><?php echo empty($statistics['crowdfunded_count'])?0:$statistics['crowdfunded_count'];?></span></a>
+							<ul>
+								<li><a <?php if ($sub_menu == 'crowdfunded_list') { ?>class="current"<?php } ?> href="/admin/crowdfunded">众筹列表</a></li>
+								<li <?php if ($sub_menu == 'product_add') { ?>class="current"<?php } ?>><a href="/admin/product/add">支持查询</a></li>
+							</ul>
+						</li>
+						<li <?php if ($menu == 'news') { ?>class="current"<?php } ?>>
+							<a href="#"><span class="awe-tasks"></span>理财交易<span class="badge"><?php echo empty($statistics['news_count'])?0:$statistics['news_count'];?></span></a>
+							<ul>
+								<li><a <?php if ($sub_menu == 'news_list') { ?>class="current"<?php } ?> href="/admin/news">认购查询</a></li>
+								<li <?php if ($sub_menu == 'news_add') { ?>class="current"<?php } ?>><a href="/admin/news/add">消费查询</a></li>
 							</ul>
 						</li>						
 						<li <?php if ($menu == 'product') { ?>class="current"<?php } ?>>
-							<a href="#"><span class="awe-tasks"></span>产品<span class="badge"><?php echo empty($statistics['product_count'])?0:$statistics['product_count'];?></span></a>
+							<a href="#"><span class="awe-tasks"></span>众筹交易<span class="badge"><?php echo empty($statistics['product_count'])?0:$statistics['product_count'];?></span></a>
 							<ul>
-								<li><a <?php if ($sub_menu == 'product_list') { ?>class="current"<?php } ?> href="/admin/product">产品一览</a></li>
-								<li <?php if ($sub_menu == 'product_add') { ?>class="current"<?php } ?>><a href="/admin/product/add">添加产品</a></li>
+								<li <?php if ($sub_menu == 'product_add') { ?>class="current"<?php } ?>><a href="/admin/product/add">支持交易查询</a></li>
 							</ul>
-						</li>
+						</li>						
+						<li <?php if ($menu == 'user') { ?>class="current"<?php } ?>>
+							<a href="#"><span class="awe-tasks"></span>用户管理<span class="badge"><?php echo empty($statistics['user_count'])?0:$statistics['user_count'];?></span></a>
+							<ul>
+								<li><a <?php if ($sub_menu == 'user_list') { ?>class="current"<?php } ?> href="/admin/user">用户一览</a></li>
+								<li <?php if ($sub_menu == 'user_vetted') { ?>class="current"<?php } ?>><a href="/admin/financing/vetted">注册审核</a></li>
+							</ul>
+						</li>					
+						<li <?php if ($menu == 'admin') { ?>class="current"<?php } ?>>
+							<a href="#"><span class="awe-tasks"></span>管理员管理<span class="badge"><?php echo empty($statistics['admin_count'])?0:$statistics['admin_count'];?></span></a>
+							<ul>
+								<li><a <?php if ($sub_menu == 'admin_list') { ?>class="current"<?php } ?> href="/admin/admin">管理员一览</a></li>
+								<li <?php if ($sub_menu == 'admin_create') { ?>class="current"<?php } ?>><a href="/admin/admin/create">添加管理员</a></li>
+							</ul>
+						</li>	
 					</ul>
 				</nav>
 				<!-- /Main navigation -->

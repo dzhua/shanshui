@@ -41,6 +41,8 @@
 $route['default_controller'] = "index";
 $route['404_override'] = '';
 
+$route['admin/error/(:num)'] = 'admin/error/index/$1';
+
 $route['(:any).html'] = 'show/index/$1.html';
 
 $route['admin'] = 'admin/login';
@@ -48,6 +50,14 @@ $route['admin/news/(:num)/(:any)'] = 'admin/news/index/$1/$2';
 $route['admin/news/(:num)/(:any)/(:num)'] = 'admin/news/index/$1/$2/$3';
 $route['admin/product/(:num)'] = 'admin/product/index/$1';
 $route['admin/product/(:num)/(:num)'] = 'admin/product/index/$1/$2';
+$route['admin/financing/create'] = 'admin/financing/create';
+$route['admin/financing/do_create'] = 'admin/financing/do_create';
+$route['admin/financing/(:any)'] = 'admin/financing/index/$1';
+$route['admin/financing/(:any)/(:num)'] = 'admin/financing/index/$1/$2';
+$route['admin/user/create'] = 'admin/user/create';
+$route['admin/user/do_create'] = 'admin/user/do_create';
+$route['admin/user/(:any)'] = 'admin/user/index/$1';
+$route['admin/user/(:any)/(:num)'] = 'admin/user/index/$1/$2';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

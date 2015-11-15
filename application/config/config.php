@@ -366,5 +366,7 @@ define('IMG_NEWS_UPLOAD_PATH', '/photo/news/');
 
 define('IMG_PRODUCT_UPLOAD_PATH', '/photo/product/');
 
+define('IMG_FINANCING_UPLOAD_PATH', '/photo/financing/');
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */

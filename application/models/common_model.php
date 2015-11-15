@@ -229,4 +229,20 @@ class Common_model extends CI_Model {
 		
 		return $data;
 	}
+	
+	// ------------------------------------------------------------------------------------------------------------
+	
+	//图片处理缩图
+	public function do_image($thumb_marker, $image_name, $width=0, $height=0)
+	{
+		$this->load->library('image_lib');
+		$config['image_library']= 'GD2';
+		$config['source_image'] = $image_name;
+		$config['width'] 		= $width;
+		$config['height'] 		= $height;
+		$config['create_thumb'] = TRUE;
+		$config['thumb_marker'] = $thumb_marker;
+		$this->image_lib->initialize($config);
+		$this->image_lib->resize();
+	}
 }

@@ -1,5 +1,5 @@
 <?
-	if(ENVIRONMENT == 'production') {
+	if(ENVIRONMENT == 'productions') {
 		$request_uri = $_SERVER['REQUEST_URI'];
 		log_message('error', $request_uri.' '.$heading.' '.$message);
 		$path = explode('/', $request_uri);
