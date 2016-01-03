@@ -504,7 +504,7 @@ ERROR - 2015-11-08 22:18:20 --> /admin/error/404 404 Page Not Found <p>The page 
 ERROR - 2015-11-08 22:24:44 --> 404 Page Not Found --> admin/js
 ERROR - 2015-11-08 22:24:44 --> 404 Page Not Found --> admin/css
 ERROR - 2015-11-08 22:24:44 --> /admin/css/master.css 404 Page Not Found <p>The page you requested was not found.</p>
-ERROR - 2015-11-08 22:24:44 --> /admin/js/jQuery001.js 404 Page Not Found <p>The page you requested was not found.</p>
+ERROR - 2015-11-08 22:24:44 --> /admin/js/jquery001.js 404 Page Not Found <p>The page you requested was not found.</p>
 ERROR - 2015-11-08 22:24:44 --> 404 Page Not Found --> admin/js
 ERROR - 2015-11-08 22:24:44 --> 404 Page Not Found --> admin/css
 ERROR - 2015-11-08 22:24:44 --> 404 Page Not Found --> admin/css
