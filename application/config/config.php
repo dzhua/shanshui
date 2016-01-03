@@ -368,5 +368,9 @@ define('IMG_PRODUCT_UPLOAD_PATH', '/photo/product/');
 
 define('IMG_FINANCING_UPLOAD_PATH', '/photo/financing/');
 
+define('IMG_CROWDFUNDED_UPLOAD_PATH', '/photo/crowdfunded/');
+
+define('IMG_CROWDFUNDED_SUPPORT_UPLOAD_PATH', '/photo/crowdfunded_support/');
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */
